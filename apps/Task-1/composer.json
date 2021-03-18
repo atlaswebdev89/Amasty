@@ -1,0 +1,17 @@
+{
+    "name": "doroshukdv/task-1",
+    "authors": [
+        {
+            "name": "Atlas",
+            "email": "doroshuk33@yandex.by"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "MyClasses\\": "Classes",
+            "CustomException\\":  "Exceptions",
+            "MyInterfaces\\":  "Interfaceses"
+        }
+    }
+}
