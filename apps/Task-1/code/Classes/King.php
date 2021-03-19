@@ -10,10 +10,10 @@ class King extends \MyClasses\AbstractChessmen
         //Допустимые значения
         $AreaValid = $this->validArea();
             if($y>$AreaValid['Ymax'] || $y<$AreaValid['Ymin']) {
-                throw new \CustomException\AreaInvalidException("Не допустимое значение Y={$y} для текущей фигуры", 50);
+                throw new \CustomException\AreaInvalidException("Не допустимое значение Y={$y} для текущей фигуры".__CLASS__, 50);
             }
             if($x>$AreaValid['Xmax'] || $x<$AreaValid['Xmin']) {
-                throw new \CustomException\AreaInvalidException("Не допустимое значение X={$x} для текущей фигуры", 50);
+                throw new \CustomException\AreaInvalidException("Не допустимое значение X={$x} для текущей фигуры".__CLASS__, 50);
             }
         $this->x = $x;
         $this->y = $y;
