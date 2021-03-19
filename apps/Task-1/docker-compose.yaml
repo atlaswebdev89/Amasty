@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+
+  web-server:
+    image: php:7.2-apache
+    restart: always
+    container_name: task-1
+    ports:
+      - 8223:80
+    volumes:
+      - ./code/:/var/www/html
