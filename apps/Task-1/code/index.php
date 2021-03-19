@@ -13,9 +13,9 @@ try{
     $king->move(2,2);
 
     echo "Позиция Queen: \n";
-    print_r($position=$queen ->getPosition());
+        print_r($position=$queen ->getPosition());
     echo "Позиция King: \n";
-    print_r($position=$king ->getPosition());
+        print_r($position=$king ->getPosition());
 
 }catch (\CustomException\AreaInvalidException $e) {
     echo $e->getMessage()."\n";
