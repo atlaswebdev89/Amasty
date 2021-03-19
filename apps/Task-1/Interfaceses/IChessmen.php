@@ -4,6 +4,6 @@ namespace MyInterfaces;
 
 interface IChessmen
 {
-    public function move ();
+    public function move (int $x, int $y);
     public function getPosition();
 }
