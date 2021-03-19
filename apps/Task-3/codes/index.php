@@ -14,25 +14,31 @@
                     <h1>Банкомат</h1>
                 </div>
                 <div class="row justify-content-center">
-                        <form>
+                        <form id="main-form">
                             <div class="form-group ">
                                 <label for="rated">Номинал в наличии</label>
                                 <input type="text" class="form-control" id="rated" name="rated" placeholder="Укажите номиналы...">
                             </div>
                             <div class="form-group">
                                 <label for="summa">Ваша сумма</label>
-                                <input type="text" class="form-control" id="summa" name="summa" placeholder="Введите сумма...">
+                                <input type="number" class="form-control" id="summa" name="summa" placeholder="Введите сумма...">
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">Отправить</button>
                             </div>
                         </form>
+                        
+                    <div class="msg">
+                        
+                    </div>
                 </div>
             </div>
         </section>
         
         <script  src="js/jquery-3.2.1.min.js"></script>
         <script  src="js/bootstrap.min.js"></script>
+        <script  src="js/jquery-validation.min.js"></script>
+        <script  src="js/main.js"></script>
     </body>
 </html>
 
