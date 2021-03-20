@@ -1,0 +1,21 @@
+form {
+    width: 100%;
+}
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.msg {
+    background-color: #ced4da;
+}
+table {
+    background-color: #fff !important;
+}
+.error-msg {
+    background-color: #fff;
+    text-align: center;
+}

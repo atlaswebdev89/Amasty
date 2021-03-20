@@ -5,8 +5,8 @@ services:
   web-server:
     image: php:7.2-apache
     restart: always
-    container_name: task-3
+    container_name: task-4
     ports:
-      - 8224:80
+      - 8225:80
     volumes:
       - ./codes/:/var/www/html
