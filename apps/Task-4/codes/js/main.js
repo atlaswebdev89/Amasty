@@ -16,16 +16,10 @@
         /* Валидация данных формы перед выполнением ajax запроса*/
 	$('#main-form').validate({
 		rules: {
-			rated:{
+			football_club:{
 				required:true,
 				minlength: 2
 			},
-			summa:{
-                                minlength: 1,
-				required:true,
-                                digits: true
-			},
-			
 		},
 		errorPlacement: function (error, element) {},
 		submitHandler: function(form) {
@@ -41,7 +35,7 @@
         /*Функция передачи данных формы*/
 	function ajaxTransferUrlEncode(forma, dataForm) {
 		
-                let uri = 'scripts/bankomat.php';
+                let uri = 'scripts/football.php';
                 let form =$(forma);
                 let elem = form.closest('div');
             

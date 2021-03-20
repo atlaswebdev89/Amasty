@@ -11,13 +11,13 @@
         <section class="mt-5">
             <div class="container">
                 <div class="row no-gutters justify-content-center">
-                    <h1>Футбок Италия Серия А</h1>
+                    <h1>Футбол Италия Серия А</h1>
                 </div>
                 <div class="row justify-content-center content">
                         <form id="main-form">
                             <div class="form-group ">
-                                <label for="rated">Укажите название команды...</label>
-                                <input type="text" class="form-control" id="rated" name="rated" placeholder="Укажите название команды...">
+                                <label for="football_club">Укажите название команды...</label>
+                                <input type="text" class="form-control" id="football_club" name="football_club" placeholder="Укажите название команды...">
                             </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">Отправить</button>
