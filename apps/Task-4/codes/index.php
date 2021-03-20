@@ -16,7 +16,7 @@
                 <div class="row justify-content-center content">
                         <form id="main-form">
                             <div class="form-group ">
-                                <label for="football_club">Укажите название команды...</label>
+                                <label for="football_club">Укажите название команды (только кириллица)...</label>
                                 <input type="text" class="form-control" id="football_club" name="football_club" placeholder="Укажите название команды...">
                             </div>
                             <div class="text-right">

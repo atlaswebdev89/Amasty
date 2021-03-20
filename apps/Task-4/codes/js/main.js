@@ -18,7 +18,8 @@
 		rules: {
 			football_club:{
 				required:true,
-				minlength: 2
+				minlength: 2,
+                                accept: "[а-яА-Я]+" 
 			},
 		},
 		errorPlacement: function (error, element) {},
@@ -45,12 +46,13 @@
 			type: 'POST',
 			url: uri,
 			data:dataForm,
-			timeout: 5000,
 			//Указывая тип json использовать функцию JSON.parse не надо будет ошибка
 			dataType: "json",
 			beforeSend: function (data) {
 				//Блокируем кнопку и элементы формы
 				form.find('button, input, textarea').attr('disabled', 'disabled');
+                                $('.msg').remove();
+                                elem.append("<div class='msg col-md-12 mt-3'><p class='m-3 '>Ожидайте получения данных...</p></div>");
 			},
 			success:  function (data) {
 				if(data) {
@@ -61,9 +63,9 @@
 						//Включение кнопки и элементов формы
 						form.find('button, input, textarea').removeAttr('disabled');
                                                     //Формируем полученный результат
-                                                    elem.append("<div class='msg col-md-12 mt-3'><p class='m-3 '>Ответ:</p></div>");
+                                                    elem.append("<div class='msg col-md-12 mt-3'><p class='m-3 '>"+data.club+"</p></div>");
                                                     let content = '<table class="table table-striped">';
-                                                    content+='<thead><tr><th>Номинал</th><th>Количество</th></tr></thead>';
+                                                    content+='<thead><tr><th>Сезон</th><th>Место</th></tr></thead>';
                                                     content+='<tbody>';
                                                         for(var key in data.message){
                                                             content+='<tr><td>'+key+'</td><td>'+data.message[key]+'</td></tr>';
@@ -74,7 +76,7 @@
 						//Включение кнопки и элементов формы
 						form.find('button, input, textarea').removeAttr('disabled');
 						//Формируем полученный результат
-                                                elem.append("<div class='msg col-md-12 mt-3'><p class='m-3 '>Ответ:</p></div>");
+                                                elem.append("<div class='msg col-md-12 mt-3'><p class='m-3 '>"+data.club+"</p></div>");
 						let content = '<div class="m-3 p-3 error-msg"><p class="m-0">'+data.message+'</p><div>';
 						$('.msg').append(content);
 					}
