@@ -48,6 +48,6 @@ foreach ($arr as $key=>$season) {
         echo json_encode([
             'status' => false,
             'club' => $club_value,
-            'message' => 'Ошибка получения данных. Попробуйте позже...'
+            'message' => 'Ошибка получения данных. Проверьте правильность введенных данных...'
         ]);
     }
