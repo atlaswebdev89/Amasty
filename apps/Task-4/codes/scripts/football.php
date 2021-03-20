@@ -33,7 +33,7 @@ foreach ($arr as $key=>$season) {
     
     foreach ($club as $item){
         if($item->find('td a',0) && $item->find('td a',0)->plaintext === $club_value) {
-                $result[$key]=$item->find('td',0)->plaintext;
+                $result[$key]=trim($item->find('td',0)->plaintext,'.');
         }       
     }
 }
