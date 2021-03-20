@@ -21,7 +21,7 @@
 				minlength: 2
 			},
 			summa:{
-                                minlength: 2,
+                                minlength: 1,
 				required:true,
                                 digits: true
 			},
@@ -40,9 +40,14 @@
         
         /*Функция передачи данных формы*/
 	function ajaxTransferUrlEncode(forma, dataForm) {
-		let uri = 'scripts/bankomat.php';
-		let form =$(forma);
-		$.ajax({
+		
+                let uri = 'scripts/bankomat.php';
+                let form =$(forma);
+                let elem = form.closest('div');
+            
+                
+		
+                $.ajax({
 			type: 'POST',
 			url: uri,
 			data:dataForm,
@@ -55,49 +60,40 @@
 			},
 			success:  function (data) {
 				if(data) {
+                                        //Убираем блок вывода
+                                        $('.msg').remove();
 					//Если ошибок нет, очищаем форму
 					if(data.status == true){
-						//Очистка формы
-						//form[0].reset();
 						//Включение кнопки и элементов формы
 						form.find('button, input, textarea').removeAttr('disabled');
-						form.find('#response_order').remove();
-						form.append("<div id='response_order' class=''><p class='msg text-center m-0 pb-3'></p> </div>");
-						form.find("div.msg").html(data.message);
-						form.find("div.msg").addClass("msg-success").fadeIn("slow");
-						setTimeout(function () {
-							//Если форма в модально окне, закрываем модальное окно при успехе
-							if (form.closest('.modal').hasClass('modal')) {
-								form.closest('.modal').modal( 'hide' );
-							}
-							$('p.msg').fadeOut("slow").removeClass('msg-success').html("");
-						}, 3000);
-					}else {
-						form.find('#response_order').remove();
-						form.append("<div id='response_order' class=''><p class='msg text-center m-0 pb-3'></p> </div>");
-						form.find("p.msg").html(data.message);
-						form.find("p.msg").addClass("msg-error").fadeIn("slow");
-						setTimeout(function () {
-							$('p.msg').fadeOut("slow");
-							//Включение кнопки и элементов формы
-							form.find('button,input, textarea').removeAttr('disabled');
-						},2000);
+                                                    //Формируем полученный результат
+                                                    elem.append("<div class='msg col-md-12 mt-3'><p class='m-3 '>Ответ:</p></div>");
+                                                    let content = '<table class="table table-striped">';
+                                                    content+='<thead><tr><th>Номинал</th><th>Количество</th></tr></thead>';
+                                                    content+='<tbody>';
+                                                        for(var key in data.message){
+                                                            content+='<tr><td>'+key+'</td><td>'+data.message[key]+'</td></tr>';
+                                                        }
+                                                    content+='</tbody></table>';
+                                                $('.msg').append(content);                                                                
+					}else if(data.status == false) {
+						//Включение кнопки и элементов формы
+						form.find('button, input, textarea').removeAttr('disabled');
+						//Формируем полученный результат
+                                                elem.append("<div class='msg col-md-12 mt-3'><p class='m-3 '>Ответ:</p></div>");
+						let content = '<div class="m-3 p-3 error-msg"><p class="m-0">'+data.message+'</p><div>';
+						$('.msg').append(content);
 					}
 				}
 			},
 			error: function(x, t, e){
 				if( t === 'timeout') {
-					// Произошел тайм-аут
-					form.find('#loading').remove();
-					//Очистка формы
-					form[0].reset();
 					//Включение кнопки и элементов формы
 					form.find('button,input, textarea').removeAttr('disabled');
-					form.find('#response_order').remove();
-					form.append("<div id='response_order' class=''><p class='msg text-center m-0 pb-3'></p> </div>");
-					form.find("p.msg").html('Превышено время ожидания');
-					form.find("p.msg").addClass("msg-error").fadeIn("slow");
-					setTimeout(function() { $('p.msg').fadeOut("slow"); }, 3000);
+                                        //Формируем полученный результат
+                                                elem.append("<div class='msg col-md-12 mt-3'><p class='m-3 '>Ответ:</p></div>");
+						let content = '<div class="m-3 p-3 error-msg"><p>Превышено время ожидания</p><div>';
+						$('.msg').append(content);
 				}
 			}
 		})

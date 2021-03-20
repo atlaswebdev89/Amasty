@@ -13,7 +13,7 @@
                 <div class="row no-gutters justify-content-center">
                     <h1>Банкомат</h1>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center content">
                         <form id="main-form">
                             <div class="form-group ">
                                 <label for="rated">Номинал в наличии</label>
@@ -27,10 +27,6 @@
                                 <button type="submit" class="btn btn-primary">Отправить</button>
                             </div>
                         </form>
-                        
-                    <div class="msg">
-                        
-                    </div>
                 </div>
             </div>
         </section>

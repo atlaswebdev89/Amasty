@@ -12,6 +12,8 @@ if(isset($_POST) && !empty($_POST)){
     if(is_array($keywords) && !empty($keywords)) {
         $keywords = array_diff($keywords, array(''));
     }
+    //Удаляем дубли из массива
+        $keywords = array_unique($keywords);
     //Сортируем в порядке убывания
         rsort($keywords);
     //Минимальная и максимальная купюра в банкомате
