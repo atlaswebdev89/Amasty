@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+    
+    db:
+        image: mysql:5.7
+        container_name: mysql_task5
+        restart: always
+        environment:
+          MYSQL_ROOT_PASSWORD: example
+        volumes:
+          - dbTask5:/var/lib/mysql
+        networks:
+          - task5
+          
+    adminer:
+        image: adminer
+        container_name: task_adminer
+        restart: always
+        ports:
+          - 8228:8080
+        networks:
+          - task5
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: task_phpmyadmin
+        restart: always
+        ports: 
+          - 8227:80
+        environment:
+          PMA_HOST: db
+        depends_on:
+          - db
+        networks:
+          - task5
+          
+networks:
+  task5:
+    driver: bridge
+
+volumes:
+  dbTask5:
+  
