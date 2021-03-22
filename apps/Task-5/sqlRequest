@@ -1,0 +1,21 @@
+1. Написать запрос, который бы выводил полное имя и баланс человека на данный момент
+
+//ВНУТРЕНЕЕ СОЕДИНЕНИЕ 
+SELECT `persons`.`fullname`, `balans`.`cash` FROM `persons` join `balans` on `persons`.`id`=`balans`.`person_id`
+SELECT `persons`.`fullname`, `balans`.`cash` FROM `persons` , `balans` WHERE `persons`.`id`=`balans`.`person_id`
+
+//ВНЕШНЕЕ СОЕДИНЕНИЕ 
+SELECT `persons`.`fullname`, `balans`.`cash` FROM `persons` left join `balans` on `persons`.`id`=`balans`.`person_id`
+
+
+2. Написать запрос, который бы выводил имя человека, который участвовал в передаче денег наибольшее количество раз
+
+select `persons`.`fullname` from `persons` where `persons`.`id` = (
+SELECT PERSON FROM (SELECT from_person_id as PERSON FROM `transactions` UNION ALL SELECT to_person_id FROM `transactions`) as TAB GROUP BY `PERSON` ORDER BY COUNT(*) DESC LIMIT 1)
+
+3.Написать запрос, отражающий все транзакции, где передача денег осуществляется между представителями одного города
+
+SELECT * FROM `transactions` WHERE (select persons.city_id from `persons` where `persons`.id = `transactions`.`from_person_id`) = (select persons.city_id from `persons` where `persons`.id = `transactions`.`to_person_id`)
+
+
+
